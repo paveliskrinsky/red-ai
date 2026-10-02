@@ -1,0 +1,22 @@
+@use "global" as *;
+
+[data-aos^="fade"] {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.7s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  &.aos-animate {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+[data-aos="fade-up"] {
+  transform: translate3d(0, 24px, 0);
+}
+
+@each $delay in (50, 100, 150, 200, 250, 300) {
+  [data-aos][data-aos-delay="#{$delay}"].aos-animate {
+    transition-delay: #{$delay}ms;
+  }
+}

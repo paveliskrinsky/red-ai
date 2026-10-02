@@ -1,0 +1,147 @@
+@use "global" as *;
+
+.footer {
+  background: var(--white);
+  padding: 0 16px;
+  margin-top: 40px;
+  @media (min-width: $md) {
+    padding: 0;
+  }
+
+  &__top {
+    background: var(--red);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 0 0 32px 32px;
+    @media (min-width: $md) {
+      padding-top: 40px;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    @media (min-width: $md) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    a {
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--white);
+      &:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
+
+    &-title {
+      margin: 0;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      color: var(--white);
+    }
+  }
+
+  &__marquee {
+    overflow: hidden;
+
+    &-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      --marquee-shift: -33.3333%;
+      animation: marquee 12s linear infinite;
+      span {
+        flex-shrink: 0;
+        padding-right: 20px;
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        color: var(--white);
+        font-size: 33px;
+        line-height: 80px;
+        letter-spacing: -0.08em;
+        @media (min-width: $md) {
+          padding-right: 100px;
+          font-size: 60px;
+          line-height: 150px;
+          letter-spacing: -6px;
+        }
+        @media (min-width: $lg) {
+          font-size: 80px;
+          line-height: 180px;
+        }
+        @media (min-width: $xl) {
+          font-size: 100px;
+          line-height: 240px;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    padding: 32px 0;
+
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    color: var(--black);
+    width: 126px;
+  }
+
+  &__legal {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 720px;
+
+    &-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--black);
+      p {
+        margin: 0;
+      }
+      a {
+        color: var(--gray);
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        text-decoration: underline;
+        text-decoration-color: var(--line);
+        &:hover {
+          text-decoration-color: var(--gray);
+        }
+      }
+      span {
+        color: var(--gray);
+      }
+    }
+
+    &-compliance {
+      margin: 0;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--black);
+    }
+  }
+}

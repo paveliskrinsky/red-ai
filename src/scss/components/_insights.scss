@@ -1,0 +1,321 @@
+@use "global" as *;
+
+.insights {
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    border-radius: 32px;
+    background: #faf9fd;
+    @media (min-width: $md) {
+      padding: 48px 32px;
+    }
+    @media (min-width: $xl) {
+      display: grid;
+      grid-template-columns: minmax(0, 546px) auto;
+      grid-template-areas:
+        "content cards"
+        "buttons cards";
+      justify-content: space-between;
+      align-content: center;
+      column-gap: 16px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $xl) {
+      grid-area: content;
+    }
+  }
+
+  &__label {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--gray-medium);
+  }
+
+  &__title {
+    margin-top: 16px;
+    @media (min-width: $md) {
+      margin-top: 32px;
+      font-size: 50px;
+      line-height: 50px;
+    }
+    @media (min-width: $xl) {
+      margin-right: -24px;
+    }
+    span {
+      color: var(--red-light);
+    }
+  }
+
+  &__br-md {
+    display: none;
+    @media (min-width: $md) {
+      display: block;
+    }
+    @media (min-width: $xl) {
+      display: none;
+    }
+  }
+
+  &__br-xl {
+    display: none;
+    @media (min-width: $xl) {
+      display: block;
+    }
+  }
+
+  &__text {
+    max-width: 570px;
+    margin: 24px 0 0;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--text-light);
+    @media (min-width: $md) {
+      font-size: 20px;
+    }
+    @media (min-width: $xl) {
+      margin-right: -24px;
+    }
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+    @media (min-width: $md) {
+      gap: 0;
+      margin-top: 32px;
+    }
+    @media (min-width: $xl) {
+      max-width: 495px;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 16px;
+    @media (min-width: $md) {
+      padding: 12px 16px;
+    }
+    & + & {
+      padding-left: 4px;
+      border-left: 1px solid var(--divider);
+      @media (min-width: $md) {
+        padding-left: 16px;
+      }
+    }
+
+    &-value {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: -1.08px;
+      white-space: nowrap;
+      @media (min-width: $md) {
+        font-size: 32px;
+        line-height: 38px;
+      }
+    }
+
+    &-label {
+      margin: 0;
+      font-size: 14px;
+      line-height: 16px;
+      color: var(--text-muted);
+      @media (min-width: $md) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 16px;
+    @media (min-width: $md) {
+      flex-direction: row;
+    }
+    @media (min-width: $xl) {
+      grid-area: buttons;
+      margin-top: 32px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    padding-right: 10px;
+    @media (min-width: $md) {
+      width: auto;
+    }
+  }
+
+  &__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    line-height: 18px;
+    white-space: nowrap;
+    color: var(--gray-rose);
+    &:hover {
+      color: var(--red);
+    }
+    svg {
+      flex-shrink: 0;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    align-self: flex-start;
+    margin-top: 16px;
+    font-size: min(16px, calc((100vw - 64px) / 41.375));
+    @media (min-width: $md) {
+      font-size: 16px;
+    }
+    @media (min-width: $xl) {
+      grid-area: cards;
+      align-self: center;
+      margin-top: 0;
+    }
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 13.125em;
+    height: 25.9375em;
+    border-radius: 1em;
+    overflow: hidden;
+    box-shadow: 0 0.21em 1.12em rgba(23, 23, 23, 0.12);
+    background: var(--white);
+    color: var(--black);
+    &:hover .insights__card-arrow {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    &-top {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+      padding: 2.5em 1.25em 1.25em;
+    }
+
+    &-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: -1em;
+      img {
+        @include picture-img;
+      }
+    }
+
+    &-cover-title,
+    &-cover-text {
+      position: relative;
+      margin: 0;
+      color: var(--white);
+    }
+
+    &-cover-title {
+      font-size: 1em;
+      line-height: 1.25;
+    }
+
+    &-cover-text {
+      font-size: 0.75em;
+      line-height: 1.167;
+    }
+
+    &-body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.5em;
+      min-height: 10.5em;
+      padding: 1em;
+      border-radius: 1em;
+      background: var(--white);
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      width: 100%;
+    }
+
+    &-label {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 1em;
+      line-height: 1;
+      letter-spacing: 0.0875em;
+      text-transform: uppercase;
+      color: var(--gray-medium);
+    }
+
+    &-title {
+      margin: 0;
+      font-weight: 400;
+      font-size: 1em;
+      line-height: 1.25;
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 0.875em;
+      line-height: 1.143;
+      color: var(--text-light);
+    }
+
+    &-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 2.25em;
+      height: 2.25em;
+      border-radius: 50%;
+      background: #fef1f2;
+      color: var(--gray-blue);
+      transition: var(--transition);
+      svg {
+        width: 1em;
+        height: 1em;
+      }
+    }
+  }
+}

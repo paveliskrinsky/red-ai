@@ -1,0 +1,91 @@
+@use "global" as *;
+
+.trusted {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+  padding: 16px;
+  background: var(--rose);
+  @media (min-width: $md) {
+    margin-top: 60px;
+    padding: 32px;
+  }
+  @media (min-width: $xxl) {
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 32px;
+  }
+
+  &__text {
+    flex-shrink: 0;
+    margin: 0;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &__marquee {
+    position: relative;
+    align-self: stretch;
+    margin: 0 -16px;
+    overflow: hidden;
+    @media (min-width: $md) {
+      margin: 0 -32px;
+    }
+    @media (min-width: $lg) {
+      margin: 0;
+    }
+    @media (min-width: $xxl) {
+      flex: 1 1 0;
+      min-width: 0;
+      align-self: center;
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      width: 40px;
+      pointer-events: none;
+      @media (min-width: $md) {
+        width: 80px;
+      }
+    }
+    &::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--rose) 0%, rgba(var(--rose-rgb), 0) 100%);
+    }
+    &::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--rose) 0%, rgba(var(--rose-rgb), 0) 100%);
+    }
+
+    &-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+
+    &-copy {
+      display: contents;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    flex-shrink: 0;
+    width: 150px;
+    height: 60px;
+    margin-right: 2px;
+    @media (min-width: $lg) {
+      margin-right: 30px;
+    }
+    img {
+      @include picture-img;
+      object-fit: contain;
+    }
+  }
+}

@@ -1,0 +1,181 @@
+@use "global" as *;
+
+.analytics {
+  --dashboard-speed: 0.5s;
+  overflow: hidden;
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 806px;
+    margin: 0 auto;
+    text-align: center;
+    @media (min-width: $md) {
+      gap: 20px;
+    }
+  }
+
+  &__br {
+    display: none;
+    @media (min-width: $md) {
+      display: block;
+    }
+  }
+
+  &__slider {
+    --dashboard-slide: 281px;
+    margin-top: 32px;
+    @media (min-width: $md) {
+      --dashboard-slide: 270px;
+      --dashboard-active: 552px;
+      --dashboard-height: 270px;
+      --dashboard-scale: 0.9783;
+    }
+    @media (min-width: $lg) {
+      --dashboard-slide: 281px;
+      --dashboard-active: 860px;
+      --dashboard-height: 420px;
+      --dashboard-scale: 0.6535;
+    }
+    .swiper {
+      overflow: visible;
+    }
+  }
+
+  &__slide {
+    width: var(--dashboard-slide);
+    height: 336px;
+    @media (min-width: $md) {
+      height: var(--dashboard-height);
+      cursor: pointer;
+      transition: transform var(--dashboard-speed), opacity var(--dashboard-speed);
+      &.swiper-slide-active {
+        cursor: default;
+      }
+      &.swiper-slide-active ~ & {
+        transform: translateX(calc(var(--dashboard-active) - var(--dashboard-slide)));
+      }
+      &:has(~ .swiper-slide-active) {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &-card {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      background: #f9f9fb;
+      overflow: hidden;
+      @media (min-width: $md) {
+        width: var(--dashboard-active);
+        border-radius: 0;
+        clip-path: inset(0 calc(var(--dashboard-active) - var(--dashboard-slide)) 0 0 round 18px);
+        transition: clip-path var(--dashboard-speed);
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left top;
+        @media (min-width: $md) {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: auto;
+          transform-origin: left top;
+          transform: scale(var(--dashboard-scale));
+          transition: transform var(--dashboard-speed);
+          will-change: transform;
+        }
+      }
+    }
+
+    @media (min-width: $md) {
+      &.swiper-slide-active &-card {
+        clip-path: inset(0 0 0 0 round 18px);
+        img {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    @media (min-width: $md) {
+      margin-top: 24px;
+    }
+    @media (min-width: $lg) {
+      max-width: 839px;
+      margin-left: auto;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    @media (min-width: $md) {
+      gap: 12px;
+    }
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      margin: 0 !important;
+      background: var(--divider);
+      border-radius: 9999px;
+      opacity: 1;
+      transition: width var(--transition);
+    }
+    .swiper-pagination-bullet-active {
+      width: 32px;
+      @media (min-width: $md) {
+        width: 40px;
+      }
+    }
+  }
+
+  &__nav {
+    display: none;
+    gap: 8px;
+    @media (min-width: $md) {
+      display: flex;
+    }
+  }
+
+  &__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--black);
+    border-radius: 9999px;
+    background: transparent;
+    color: var(--black);
+    &:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+    &.swiper-button-disabled {
+      opacity: 0.3;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

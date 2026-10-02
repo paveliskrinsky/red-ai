@@ -1,0 +1,230 @@
+@use "global" as *;
+
+.inquiry {
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 40px;
+    padding: 24px 16px;
+    border-radius: 32px;
+    background: var(--bg-light);
+    @media (min-width: $md) {
+      margin-top: 60px;
+      padding: 32px;
+    }
+    @media (min-width: $xl) {
+      flex-direction: row;
+      gap: 20px;
+    }
+    @media (min-width: $xxl) {
+      gap: 50px;
+    }
+    @media (min-width: $xxxl) {
+      gap: 100px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @media (min-width: $md) {
+      max-width: 448px;
+    }
+    @media (min-width: $xl) {
+      flex-shrink: 0;
+      width: 527px;
+      max-width: none;
+    }
+  }
+
+  &__heading {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.56px;
+    @media (min-width: $md) {
+      font-size: 28px;
+      line-height: 32px;
+    }
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    @media (min-width: $xl) {
+      max-width: 480px;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    height: 52px;
+    padding: 6px 20px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--white);
+    cursor: text;
+    transition: var(--transition);
+    &:focus-within {
+      border-color: var(--red-light);
+    }
+
+    &-label {
+      font-size: 12px;
+      line-height: 12px;
+      letter-spacing: -0.24px;
+      color: var(--text-light);
+    }
+
+    input {
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      font-size: 16px;
+      line-height: 18px;
+      color: var(--black);
+      &::placeholder {
+        color: var(--text-placeholder);
+      }
+    }
+  }
+
+  &__agree {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    cursor: pointer;
+    input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    input:checked + .inquiry__agree-box svg {
+      opacity: 1;
+    }
+    input:focus-visible + .inquiry__agree-box {
+      border-color: var(--red);
+    }
+
+    &-box {
+      display: flex;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--red-muted);
+      border-radius: 4px;
+      background: var(--white);
+      color: var(--red-muted);
+      transition: var(--transition);
+      svg {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: var(--transition);
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      line-height: 18px;
+      color: var(--text-placeholder);
+      a {
+        text-decoration: underline;
+        &:hover {
+          color: var(--red);
+        }
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: -0.32px;
+    box-shadow: 0 4px 6px -2px rgba(var(--shadow-rgb), 0.05), 0 12px 16px -4px rgba(var(--shadow-rgb), 0.12);
+    @media (min-width: $md) {
+      width: 214px;
+    }
+  }
+
+  &__support {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @media (min-width: $xl) {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
+  &__phone {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    &-label {
+      margin: 0;
+      font-size: 18px;
+      line-height: 24px;
+      color: var(--text-muted);
+    }
+
+    &-link {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      line-height: 28px;
+      letter-spacing: -0.56px;
+      color: var(--black);
+      transition: var(--transition);
+      @media (min-width: $md) {
+        font-size: 28px;
+        line-height: 32px;
+      }
+      &:hover {
+        color: var(--red);
+      }
+    }
+  }
+
+  &__map {
+    position: relative;
+    display: block;
+    height: 196px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f2ecec;
+    @media (min-width: $md) {
+      height: 462px;
+    }
+    @media (min-width: $xl) {
+      flex: 1 1 auto;
+      height: auto;
+      min-height: 300px;
+    }
+    iframe {
+      @include picture-img;
+      border: 0;
+    }
+  }
+}

@@ -1,0 +1,314 @@
+@use "global" as *;
+
+.connect {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  > .container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    @media (min-width: $md) {
+      gap: 24px;
+    }
+  }
+
+  &__subtitle {
+    color: var(--text-light);
+  }
+
+  &__label {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--border);
+
+    &_gray {
+      color: var(--text-light);
+    }
+  }
+
+  &__integrations {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 16px;
+    border-radius: 32px;
+    background: linear-gradient(90deg, #0d0e18 35.7%, #ba4146 100%);
+    color: var(--white);
+    @media (min-width: $md) {
+      padding: 48px 32px;
+    }
+    @media (min-width: $xl) {
+      display: grid;
+      grid-template-columns: minmax(0, 648px) 553px;
+      grid-template-areas:
+        "content image"
+        "button image";
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px 20px;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      @media (min-width: $xl) {
+        grid-area: content;
+        align-self: end;
+      }
+    }
+
+    &-title {
+      color: var(--white);
+      @media (min-width: $md) {
+        font-size: 40px;
+        line-height: 40px;
+      }
+      @media (min-width: $xl) {
+        font-size: 60px;
+        line-height: 60px;
+      }
+      span {
+        color: var(--red-light);
+      }
+    }
+
+    &-br {
+      @media (min-width: $xl) {
+        display: none;
+      }
+    }
+
+    &-text {
+      margin: -8px 0 0;
+      font-size: 20px;
+      line-height: 24px;
+      color: var(--text-light);
+      @media (min-width: $xl) {
+        max-width: 434px;
+      }
+    }
+
+    &-image {
+      position: relative;
+      width: 100%;
+      max-width: 670px;
+      margin: 0 auto;
+      aspect-ratio: 553 / 409;
+      @media (min-width: $xl) {
+        grid-area: image;
+        margin: 0;
+      }
+      img {
+        @include picture-img;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__tools {
+    display: flex;
+    gap: 16px;
+    margin: -12px 0 0;
+    padding: 0;
+    list-style: none;
+    @media (min-width: $md) {
+      gap: 32px;
+      margin-top: 0;
+    }
+  }
+
+  &__tool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    line-height: 16px;
+    &:last-child {
+      margin-left: -10px;
+      @media (min-width: $md) {
+        margin-left: -16px;
+      }
+    }
+    @media (min-width: $md) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    &-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: #4c4142;
+      color: #f0525d;
+      @media (min-width: $md) {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+      }
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__button {
+    align-self: flex-start;
+    padding-right: 10px;
+    @media (min-width: $xl) {
+      grid-area: button;
+      align-self: start;
+      justify-self: start;
+    }
+  }
+
+  &__security {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 16px;
+    border-radius: 32px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 3px 18px rgba(var(--black-rgb), 0.12);
+    @media (min-width: $md) {
+      padding: 48px 32px;
+    }
+    @media (min-width: $lg) {
+      flex-direction: row;
+    }
+    @media (min-width: $xxl) {
+      align-items: flex-end;
+    }
+
+    &-bg {
+      position: absolute;
+      inset: 0;
+      img {
+        @include picture-img;
+        @media (min-width: $md) {
+          object-position: 85% 50%;
+        }
+      }
+    }
+
+    &-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      @media (min-width: $lg) {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+
+    &-title {
+      margin: 12px 0 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 40px;
+      letter-spacing: -1.8px;
+      span {
+        color: var(--red-light);
+      }
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 20px;
+      line-height: 24px;
+      color: var(--text-light);
+    }
+  }
+
+  &__features {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    @media (min-width: $md) {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px 16px;
+    }
+    @media (min-width: $lg) {
+      flex-shrink: 0;
+      grid-template-columns: repeat(2, 253px);
+      grid-template-rows: repeat(3, auto);
+      grid-auto-flow: column;
+      gap: 16px 32px;
+    }
+    @media (min-width: $xxl) {
+      grid-template-columns: repeat(3, 253px);
+      grid-template-rows: none;
+      grid-auto-flow: row;
+      gap: 32px 8px;
+    }
+  }
+
+  &__feature {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 16px;
+    border-left: 1px solid var(--text-light);
+
+    &-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: var(--divider-light);
+      color: var(--red);
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-title {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.56px;
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 14px;
+      line-height: 16px;
+      color: var(--text-muted);
+    }
+  }
+}

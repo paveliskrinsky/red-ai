@@ -1,0 +1,121 @@
+@use "global" as *;
+
+.summary {
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 40px 10px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #a37d7f;
+    @media (min-width: $md) {
+      margin: 0 -32px;
+      border-radius: 32px;
+    }
+    @media (min-width: $lg) {
+      padding: 80px 10px;
+    }
+    @media (min-width: $xxl) {
+      margin: 0;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(108, 8, 13, 0.2) 0%, rgba(179, 154, 156, 0) 34.5%);
+      pointer-events: none;
+    }
+  }
+
+  &__bg {
+    img {
+      position: absolute;
+      top: -4.7%;
+      left: 0;
+      width: 100%;
+      height: 151%;
+      object-fit: cover;
+      object-position: 49% 0;
+      @media (min-width: $md) {
+        top: 0;
+        width: 130.4%;
+        height: 118.3%;
+        object-position: 50% 45%;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    max-width: 878px;
+    text-align: center;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 8px 16px;
+    border: 1px solid var(--white);
+    border-radius: 24px;
+    font-family: "Playfair Display", serif;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--white);
+    @media (min-width: $md) {
+      font-size: 12.6px;
+      line-height: 18px;
+    }
+    svg {
+      flex-shrink: 0;
+    }
+  }
+
+  &__title {
+    font-size: 26px;
+    line-height: 26px;
+    color: var(--white);
+    @media (min-width: $md) {
+      font-size: 40px;
+      line-height: 40px;
+    }
+    @media (min-width: $lg) {
+      font-size: 60px;
+      line-height: 60px;
+    }
+  }
+
+  &__button {
+    gap: 4px;
+    padding: 0 6px 0 16px;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: -0.32px;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--red-icon);
+    }
+  }
+}

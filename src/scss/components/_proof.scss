@@ -1,0 +1,143 @@
+@use "global" as *;
+
+.proof {
+  background: var(--rose);
+  padding-top: 10px;
+  overflow: hidden;
+  @media (min-width: $md) {
+    padding: 32px 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--black);
+    @media (min-width: $md) {
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+  }
+
+  &__body {
+    @media (min-width: $xl) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    @media (min-width: $md) {
+      justify-content: flex-start;
+      gap: 24px;
+    }
+    @media (min-width: $xl) {
+      flex-shrink: 0;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--text-muted);
+    @media (min-width: $md) {
+      padding: 12px 16px;
+    }
+    & + & {
+      padding-left: 4px;
+      border-left: 1px solid var(--divider);
+      @media (min-width: $md) {
+        padding-left: 16px;
+      }
+    }
+
+    &-value {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: -1.08px;
+      white-space: nowrap;
+      @media (min-width: $md) {
+        font-size: 32px;
+        line-height: 38px;
+      }
+    }
+
+    &-label {
+      margin: 0;
+      font-size: 14px;
+      line-height: 16px;
+      white-space: nowrap;
+      @media (min-width: $md) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  &__marquee {
+    position: relative;
+    margin: 12px -16px 0;
+    overflow: hidden;
+    @media (min-width: $md) {
+      margin: 16px -32px 0;
+    }
+    @media (min-width: $xl) {
+      flex: 1;
+      min-width: 0;
+      margin: 0 calc((100% - 100vw) / 2) 0 0;
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      width: 40px;
+      pointer-events: none;
+      @media (min-width: $md) {
+        width: 80px;
+      }
+    }
+    &::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--rose) 0%, rgba(var(--rose-rgb), 0) 100%);
+    }
+    &::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--rose) 0%, rgba(var(--rose-rgb), 0) 100%);
+    }
+
+    &-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+
+    &-copy {
+      display: contents;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    flex-shrink: 0;
+    width: 150px;
+    height: 60px;
+    margin-right: 2px;
+    @media (min-width: $md) {
+      margin-right: 30px;
+    }
+    img {
+      @include picture-img;
+      object-fit: contain;
+    }
+  }
+}

@@ -1,0 +1,199 @@
+@use "global" as *;
+
+.roles {
+  --must-have-top: 100px;
+  --must-have-peek: 66px;
+
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  &__title {
+    br {
+      display: none;
+      @media (min-width: $md) {
+        display: block;
+      }
+    }
+  }
+
+  &__subtitle {
+    max-width: 692px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  &__card {
+    border-radius: 32px;
+    perspective: 2400px;
+    @media (min-width: $md) {
+      position: sticky;
+      top: calc(var(--must-have-top) + var(--must-have-index) * var(--must-have-peek));
+      z-index: calc(var(--must-have-index) + 1);
+    }
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        --must-have-index: #{$i - 1};
+      }
+    }
+
+    &:not(:first-child) {
+      @media (min-width: $md) {
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+      }
+    }
+
+    &-inner {
+      display: grid;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.25, 1);
+      @media (min-width: $md) {
+        height: 400px;
+      }
+    }
+
+    &.active &-inner {
+      transform: rotateY(180deg);
+    }
+    @media (hover: hover) {
+      &:hover &-inner {
+        transform: rotateY(180deg);
+      }
+    }
+
+    &-front,
+    &-back {
+      grid-area: 1 / 1;
+      border-radius: 32px;
+      background: var(--bg-light);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: visibility 0s linear 0.4s;
+    }
+
+    &.active &-front {
+      visibility: hidden;
+    }
+    &.active &-back {
+      visibility: visible;
+    }
+    @media (hover: hover) {
+      &:hover &-front {
+        visibility: hidden;
+      }
+      &:hover &-back {
+        visibility: visible;
+      }
+    }
+
+    &-front {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px 16px;
+      @media (min-width: $md) {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 24px;
+      }
+      @media (min-width: $lg) {
+        gap: 24px;
+      }
+    }
+
+    &-back {
+      position: relative;
+      overflow: hidden;
+      transform: rotateY(180deg);
+      visibility: hidden;
+      img {
+        @include picture-img;
+        object-fit: contain;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      @media (min-width: $md) {
+        flex-shrink: 0;
+        justify-content: space-between;
+        width: 399px;
+        padding: 10px 0;
+      }
+    }
+
+    &-label {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 13px;
+      line-height: 18px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      @media (min-width: $md) {
+        gap: 16px;
+      }
+    }
+
+    &-title {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 32px;
+      letter-spacing: -0.56px;
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 16px;
+      line-height: 20px;
+      color: var(--text-muted);
+    }
+
+    &-image {
+      position: relative;
+      order: -1;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 326 / 183;
+      @media (min-width: $md) {
+        order: 0;
+        flex: 0 1 726px;
+        min-width: 0;
+        aspect-ratio: auto;
+      }
+      img {
+        @include picture-img;
+      }
+    }
+  }
+
+  &__card:first-child &__card-image img {
+    object-position: 50% 0;
+  }
+}

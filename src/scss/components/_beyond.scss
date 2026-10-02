@@ -1,0 +1,259 @@
+@use "global" as *;
+
+.beyond {
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__card {
+    position: relative;
+    padding: 24px 16px;
+    border-radius: 32px;
+    background: var(--bg-light);
+    overflow: hidden;
+    @media (min-width: $md) {
+      padding: 48px 32px;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    img {
+      @include picture-img;
+      object-fit: fill;
+      @media (min-width: $md) {
+        object-fit: cover;
+        object-position: 75% 50%;
+      }
+    }
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__head {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    height: 16px;
+  }
+
+  &__label {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--gray-medium);
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    margin-top: 16px;
+    @media (min-width: $md) {
+      font-size: 60px;
+      line-height: 60px;
+    }
+    @media (min-width: $xxl) {
+      margin-top: 32px;
+    }
+    span {
+      color: var(--red-light);
+    }
+  }
+
+  &__subtitle {
+    position: relative;
+    z-index: 1;
+    margin: 16px 0 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--text-light);
+    @media (min-width: $md) {
+      max-width: 502px;
+      margin-top: 24px;
+      font-size: 20px;
+    }
+    @media (min-width: $xxl) {
+      max-width: 570px;
+    }
+  }
+
+  &__features {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+    @media (min-width: $md) {
+      grid-template-columns: 245px 225px;
+      grid-template-rows: repeat(3, auto);
+      grid-auto-flow: column;
+      gap: 8px 0;
+      margin-top: 32px;
+    }
+    @media (min-width: $xl) {
+      grid-template-columns: repeat(3, 225px);
+      grid-template-rows: none;
+      grid-auto-flow: row;
+      gap: 32px 8px;
+    }
+    @media (min-width: $xxl) {
+      grid-template-columns: repeat(3, 253px);
+    }
+  }
+
+  &__feature {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    @media (min-width: $md) {
+      padding-left: 16px;
+      border-left: 1px solid var(--text-light);
+    }
+
+    &-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: var(--divider-light);
+      color: var(--red);
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-title {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.56px;
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 14px;
+      line-height: 16px;
+      color: var(--text-muted);
+    }
+  }
+
+  &__media {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    @media (min-width: $md) {
+      position: relative;
+      width: 496px;
+      margin-top: 32px;
+    }
+    @media (min-width: $lg) {
+      position: absolute;
+      top: 157px;
+      right: -28px;
+      width: 414px;
+      margin: 0;
+    }
+    @media (min-width: $xl) {
+      top: 77px;
+      right: 0;
+      width: 416px;
+    }
+    @media (min-width: $xxl) {
+      top: 1px;
+      width: 493px;
+    }
+  }
+
+  &__orders {
+    aspect-ratio: 326 / 292;
+    @media (min-width: $md) {
+      aspect-ratio: 496 / 469;
+    }
+    @media (min-width: $lg) {
+      aspect-ratio: 414 / 403;
+    }
+    @media (min-width: $xl) {
+      aspect-ratio: 416 / 419;
+    }
+    @media (min-width: $xxl) {
+      aspect-ratio: 493 / 477;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__economy {
+    position: relative;
+    align-self: flex-end;
+    width: 212px;
+    margin-top: -23px;
+    aspect-ratio: 280 / 102;
+    @media (min-width: $md) {
+      position: absolute;
+      top: 404px;
+      left: 424px;
+      margin: 0;
+    }
+    @media (min-width: $lg) {
+      top: 319px;
+      left: 106px;
+      width: 280px;
+    }
+    @media (min-width: $xl) {
+      top: 361px;
+      left: 136px;
+    }
+    @media (min-width: $xxl) {
+      top: 429px;
+      left: 213px;
+    }
+    img {
+      position: absolute;
+      top: -14.22%;
+      left: -6.43%;
+      width: 112.86%;
+      height: 135.29%;
+      max-width: none;
+    }
+  }
+
+  &__action {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+    margin-top: 16px;
+    @media (min-width: $md) {
+      align-self: flex-start;
+      margin-top: 32px;
+    }
+  }
+
+  &__button {
+    padding-right: 10px;
+  }
+}

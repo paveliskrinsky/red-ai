@@ -1,0 +1,21 @@
+{
+  "name": "red-ai",
+  "version": "1.0.0",
+  "description": "red-ai",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "gulp": "^5.0.1",
+    "gulp-autoprefixer": "^10.0.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-sass": "^6.0.1",
+    "sass": "^1.105.0"
+  }
+}

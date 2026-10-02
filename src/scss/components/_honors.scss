@@ -1,0 +1,98 @@
+@use "global" as *;
+
+.honors {
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__card {
+    padding: 16px 24px;
+    border-radius: 32px;
+    background: var(--bg-light);
+    overflow: hidden;
+    @media (min-width: $md) {
+      padding-bottom: 28px;
+      overflow: visible;
+    }
+    @media (min-width: $xl) {
+      padding: 16px 32px 28px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.56px;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    margin: 22px -24px 0;
+    padding: 2px 24px 5px;
+    overflow-x: auto;
+    @media (min-width: $md) {
+      flex-wrap: wrap;
+      row-gap: 22px;
+      margin: 24px 0 0;
+      padding: 0;
+      overflow: visible;
+    }
+    @media (min-width: $xl) {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 155px));
+      justify-content: space-between;
+      gap: 0;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 155px;
+    height: 175px;
+    text-align: center;
+
+    &-frame {
+      position: absolute;
+      z-index: 1;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 5px);
+      color: #ec5d67;
+      pointer-events: none;
+    }
+
+    &-badge {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 26px;
+      padding: 0 8px;
+      background: linear-gradient(90deg, #ea6d75 0%, #ed5c66 100%);
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 10px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--white);
+    }
+
+    &-text {
+      margin: 0;
+      padding: 0 6px;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+}

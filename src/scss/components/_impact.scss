@@ -1,0 +1,155 @@
+@use "global" as *;
+
+.impact {
+  padding-top: 40px;
+  @media (min-width: $md) {
+    padding-top: 60px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px 16px;
+    border-radius: 32px;
+    background: linear-gradient(90deg, #f1f4fa 1%, #d7e5f2 97%);
+    @media (min-width: $md) {
+      padding: 48px 32px;
+    }
+    @media (min-width: $xl) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @media (min-width: $xl) {
+      max-width: 644px;
+    }
+  }
+
+  &__title {
+    @media (min-width: $md) {
+      font-size: 60px;
+      line-height: 60px;
+    }
+    span {
+      color: var(--red-light);
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.56px;
+    @media (min-width: $md) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-top: 8px;
+    @media (min-width: $xl) {
+      gap: 8px 12px;
+    }
+    @media (min-width: $xxl) {
+      gap: 8px 24px;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 16px;
+    color: var(--text-muted);
+
+    & + & {
+      border-left: 1px solid var(--divider);
+    }
+
+    &-value {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      line-height: 34px;
+      letter-spacing: -1.08px;
+      @media (min-width: $md) {
+        font-size: 32px;
+        line-height: 38px;
+      }
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 14px;
+      line-height: 20px;
+      @media (min-width: $md) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  &__media {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 542px;
+    aspect-ratio: 542 / 362;
+    align-self: center;
+    @media (min-width: $xl) {
+      width: 400px;
+      align-self: flex-start;
+    }
+    @media (min-width: $xxl) {
+      width: 542px;
+    }
+  }
+
+  &__logos {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70.66%;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__case {
+    position: absolute;
+    top: 48.07%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68.63%;
+    aspect-ratio: 372 / 188;
+    border-radius: 24px;
+    background: rgba(var(--white-rgb), 0.5);
+    @media (min-width: $md) {
+      border-radius: 42px;
+    }
+
+    &-logo {
+      width: 73.66%;
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
